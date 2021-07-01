@@ -1,0 +1,80 @@
+name: cd
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      - name: Generate Tagged Urls 🏷
+        id: image_tags
+        shell: bash
+        run: |
+          SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-8)
+          echo "::set-output name=sha::registry.digitalocean.com/iechamberi/api:$SHORT_SHA"
+          echo "::set-output name=latest::registry.digitalocean.com/iechamberi/api:latest"
+
+      - name: Set up Docker Buildx 🎛
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build Image 🏗
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          tags: ${{ steps.image_tags.outputs.sha }},${{ steps.image_tags.outputs.latest }}
+          outputs: type=docker,dest=/tmp/api.tar
+
+      - name: Upload artifact 📤
+        uses: actions/upload-artifact@v2
+        with:
+          name: api
+          path: /tmp/api.tar
+
+  release:
+    needs: build
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      - name: Download artifact 📥
+        uses: actions/download-artifact@v2
+        with:
+          name: api
+          path: /tmp
+
+      - name: Load Docker image 📂
+        run: docker load --input /tmp/api.tar
+
+      - name: Install doctl 🎛
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Login to registry 💳
+        shell: bash
+        run: doctl registry login --expiry-seconds 600
+
+      - name: Upload image to registry 📤
+        shell: bash
+        run: docker push -a registry.digitalocean.com/iechamberi/api
