@@ -122,3 +122,4 @@ exports
 docker-compose.override.yml
 docker-compose.yml
 README.md
+config/ca-cert.crt

@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 module.exports = ({ env }) => ({
   defaultConnection: 'default',
   connections: {
@@ -6,7 +8,7 @@ module.exports = ({ env }) => ({
       settings: {
         client: 'postgres',
         host: env('DATABASE_HOST', 'localhost'),
-        port: env('DATABASE_PORT', 5432),
+        port: env.int('DATABASE_PORT', 5432),
         database: env('DATABASE_NAME'),
         username: env('DATABASE_USERNAME'),
         password: env('DATABASE_PASSWORD'),
@@ -15,7 +17,7 @@ module.exports = ({ env }) => ({
           ca:
             process.env.NODE_ENV === 'production'
               ? process.env.CA_CERT
-              : fs.readFileSync(`${__dirname}/ca-certificate.crt`).toString(),
+              : fs.readFileSync(`${__dirname}/ca-cert.crt`).toString(),
         },
       },
       options: {}
