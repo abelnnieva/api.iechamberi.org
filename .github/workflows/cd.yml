@@ -39,6 +39,9 @@ jobs:
           tags: ${{ steps.image_tags.outputs.sha }},${{ steps.image_tags.outputs.latest }}
           outputs: type=docker,dest=/tmp/api.tar
 
+      - name: Load Docker image 📂
+        run: docker load --input /tmp/api.tar
+
       - name: Install doctl 🎛
         uses: digitalocean/action-doctl@v2
         with:
