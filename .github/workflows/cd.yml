@@ -52,6 +52,8 @@ jobs:
         run: docker push -a registry.digitalocean.com/iechamberi/api
 
   deploy:
+    needs: release
+
     name: Deploy to production
 
     runs-on: ${{ matrix.os }}
