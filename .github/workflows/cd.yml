@@ -6,7 +6,9 @@ on:
       - main
 
 jobs:
-  build:
+  release:
+    name: Release to repository
+
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -35,36 +37,6 @@ jobs:
           context: .
           file: ./Dockerfile
           tags: ${{ steps.image_tags.outputs.sha }},${{ steps.image_tags.outputs.latest }}
-          outputs: type=docker,dest=/tmp/api.tar
-
-      - name: Upload artifact 📤
-        uses: actions/upload-artifact@v2
-        with:
-          name: api
-          path: /tmp/api.tar
-
-  release:
-    needs: build
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [14]
-
-    steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v2
-
-      - name: Download artifact 📥
-        uses: actions/download-artifact@v2
-        with:
-          name: api
-          path: /tmp
-
-      - name: Load Docker image 📂
-        run: docker load --input /tmp/api.tar
 
       - name: Install doctl 🎛
         uses: digitalocean/action-doctl@v2
@@ -78,3 +50,26 @@ jobs:
       - name: Upload image to registry 📤
         shell: bash
         run: docker push -a registry.digitalocean.com/iechamberi/api
+
+  deploy:
+    name: Deploy to production
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      - name: Install doctl 🎛
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Create a deployment 🚀
+        shell: bash
+        run: doctl apps create-deployment ${{ secrets.DIGITALOCEAN_APP_ID }} --wait
