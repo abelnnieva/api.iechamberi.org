@@ -1,0 +1,57 @@
+{
+  "collectionName": "components_common_buttons",
+  "info": {
+    "name": "button",
+    "icon": "bold"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "outline",
+        "ghost",
+        "unstyled",
+        "link",
+        "solid"
+      ],
+      "default": "solid",
+      "required": true
+    },
+    "variantColor": {
+      "type": "enumeration",
+      "enum": [
+        "gray",
+        "red",
+        "yellow",
+        "green",
+        "blue",
+        "indigo",
+        "purple",
+        "pink"
+      ]
+    },
+    "isDisabled": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "xs",
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "required": true
+    },
+    "link": {
+      "model": "link"
+    }
+  }
+}

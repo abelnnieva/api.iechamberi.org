@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_common_meta_tags",
+  "info": {
+    "name": "metaTags",
+    "icon": "tags",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 80
+    },
+    "description": {
+      "type": "text",
+      "required": false,
+      "maxLength": 160
+    },
+    "image": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.image"
+    }
+  }
+}
