@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_page_headers",
+  "info": {
+    "name": "pageHeader",
+    "icon": "heading",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "summary": {
+      "type": "text"
+    }
+  }
+}

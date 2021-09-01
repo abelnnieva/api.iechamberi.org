@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_three_column_pictures",
+  "info": {
+    "name": "threeColumnPictures",
+    "icon": "images"
+  },
+  "options": {},
+  "attributes": {
+    "pictures": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.image",
+      "max": 3,
+      "min": 3,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/what-we-believe",
+      "handler": "what-we-believe.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/what-we-believe",
+      "handler": "what-we-believe.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/what-we-believe",
+      "handler": "what-we-believe.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
