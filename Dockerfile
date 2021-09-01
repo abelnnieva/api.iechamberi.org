@@ -14,6 +14,9 @@ COPY . ./
 # run with the production settings
 ENV NODE_ENV production
 
+# install plugins dependencies
+RUN yarn --cwd ./plugins/wysiwyg install --production
+
 # build necessary, even if no static files are needed,
 # since it builds the server as well
 RUN yarn build
