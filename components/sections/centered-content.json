@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_centered_contents",
+  "info": {
+    "name": "centeredContent",
+    "icon": "align-center"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

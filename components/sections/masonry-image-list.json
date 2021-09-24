@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_masonry_image_lists",
+  "info": {
+    "name": "masonryImageList",
+    "icon": "grip-horizontal"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.image",
+      "required": true,
+      "min": 1
+    }
+  }
+}

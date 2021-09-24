@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_quilted_image_lists",
+  "info": {
+    "name": "quiltedImageList",
+    "icon": "grip-vertical"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.image",
+      "required": true,
+      "min": 3,
+      "max": 8
+    }
+  }
+}

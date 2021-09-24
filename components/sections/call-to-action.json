@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sections_call_to_actions",
+  "info": {
+    "name": "callToAction",
+    "icon": "phone-volume",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "action": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.link",
+      "required": true
+    }
+  }
+}
