@@ -2,13 +2,17 @@
   "collectionName": "components_common_images",
   "info": {
     "name": "image",
-    "icon": "image"
+    "icon": "image",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "alt": {
       "type": "string",
       "required": true
+    },
+    "caption": {
+      "type": "text"
     },
     "media": {
       "model": "file",
