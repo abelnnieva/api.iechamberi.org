@@ -2,12 +2,14 @@
   "collectionName": "components_common_buttons",
   "info": {
     "name": "button",
-    "icon": "bold"
+    "icon": "bold",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "label": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "variant": {
       "type": "enumeration",
