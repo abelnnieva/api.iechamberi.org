@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_three_column_features",
+  "info": {
+    "name": "threeColumnFeatures",
+    "icon": "birthday-cake",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "features": {
+      "collection": "feature"
+    }
+  }
+}

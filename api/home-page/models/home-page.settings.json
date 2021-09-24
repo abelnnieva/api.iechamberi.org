@@ -35,6 +35,18 @@
         }
       },
       "component": "sections.hero"
+    },
+    "sections": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "sections.call-to-action",
+        "sections.three-column-features"
+      ]
     }
   }
 }
