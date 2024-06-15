@@ -1,3 +1,3 @@
-# Strapi application
+# api.iechamberi.org
 
-A quick description of your strapi application
+API with data models for marketing components and sections of a Christian assembly website, developed using Strapi 3 and GraphQL.
